@@ -16,7 +16,7 @@ extern "C" NTSTATUS Main(PDRIVER_OBJECT DriverObj, PUNICODE_STRING RegistryPath)
 
 	if (wink32base)
 	{
-		auto dataPtr = FindPattern((UINT64)wink32base, (UINT64)0xFFFFFFFFFF, (BYTE*)"\x74\x20\x48\x8B\x44\x24\x00\x44", "xxxxxx?x");
+		auto dataPtr = FindPattern((UINT64)wink32base, (UINT64)0xFFFFFFFFFF, (BYTE*)"example sig", "mask");
 
 		if (dataPtr)
 		{
@@ -29,7 +29,7 @@ extern "C" NTSTATUS Main(PDRIVER_OBJECT DriverObj, PUNICODE_STRING RegistryPath)
 			PEPROCESS Target;
 			NTSTATUS Status;
 
-			if (NT_SUCCESS(Status = FindProcess("winloon.exe", &Target)))
+			if (NT_SUCCESS(Status = FindProcess("explorer.exe", &Target)))
 			{
 				if (Target)
 				{
