@@ -35,7 +35,7 @@ extern "C" NTSTATUS Main(PDRIVER_OBJECT DriverObj, PUNICODE_STRING RegistryPath)
 				{
 					KeAttachProcess(Target);
 
-					*(PVOID*)&Qword_ptrOriginal = InterlockedExchangePointer((PVOID*)qword_ptr_derf, (PVOID)NtSetCompositionSurfaceAnalogExclusive);
+					*(PVOID*)&Qword_ptrOriginal = InterlockedExchangePointer((PVOID*)qword_deref, (PVOID)NtExample);
 
 					KeDetachProcess();
 				}
