@@ -12,7 +12,7 @@ extern "C" NTSTATUS Main(PDRIVER_OBJECT DriverObj, PUNICODE_STRING RegistryPath)
 	UNREFERENCED_PARAMETER(RegistryPath);
 
 
-	auto wink32base = mem::GetSystemBaseModule("\\SystemRoot\\System32\\win32kbase.sys");
+	auto wink32base = GetSystemBaseModule("\\SystemRoot\\System32\\win32kbase.sys");
 
 	if (wink32base)
 	{
