@@ -12,11 +12,11 @@ extern "C" NTSTATUS Main(PDRIVER_OBJECT DriverObj, PUNICODE_STRING RegistryPath)
 	UNREFERENCED_PARAMETER(RegistryPath);
 
 
-	auto wink32base = GetSystemBaseModule("\\SystemRoot\\System32\\win32kbase.sys");
+	auto wink32base = GetSystemBaseModule("\\SystemRoot\\System32\\win32kbase.sys");//inc
 
 	if (wink32base)
 	{
-		auto dataPtr = FindPattern((UINT64)wink32base, (UINT64)0xFFFFFFFFFF, (BYTE*)"example sig", "mask");
+		auto dataPtr = FindPattern((UINT64)wink32base, (UINT64)0xFFFFFFFFFF, (BYTE*)"example sig", "mask");//inc
 
 		if (dataPtr)
 		{
@@ -29,7 +29,7 @@ extern "C" NTSTATUS Main(PDRIVER_OBJECT DriverObj, PUNICODE_STRING RegistryPath)
 			PEPROCESS Target;
 			NTSTATUS Status;
 
-			if (NT_SUCCESS(Status = FindProcess("explorer.exe", &Target)))
+			if (NT_SUCCESS(Status = FindProcess("explorer.exe", &Target)))//inc curEntry = PsInitialSystemProcess
 			{
 				if (Target)
 				{
